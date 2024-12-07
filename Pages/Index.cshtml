@@ -4,15 +4,34 @@
     ViewData["Title"] = "Home page";
 }
 
-<form action="action_page.php" method="post">
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-    <hr>
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <hr>
-    <button type="submit">Login</button>
-    
-  </div>
-</form>
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row" style="margin:20px;">
+            <div class="col-2">
+                <label asp-for="StaffLogin.username"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="StaffLogin.username" class="form-control"/>
+                <span class="text-danger" asp-validation-for="StaffLogin.username"></span>
+            </div>
+        </div>
+        <div class="form-group row" style="margin:20px;">
+            <div class="col-2">
+                <label asp-for="StaffLogin.password"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="StaffLogin.password" class="form-control"/>
+                <span class="text-danger" asp-validation-for="StaffLogin.password"></span>
+            </div>
+        </div>
+         <div class="form-group row"style="margin:20px;">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </div>
+            <div class="col-5">
+
+            </div>
+        </div>
+    </form>  
+</div>

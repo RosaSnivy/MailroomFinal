@@ -8,6 +8,9 @@ public class IndexModel : PageModel
     // Add: Property for database context
     private readonly MailroomDbContext _context; // Replaces the "db" variable from before
     private readonly ILogger<IndexModel> _logger;
+
+    [BindProperty]
+    public StaffLogin StaffLogin {get; set;} = null!;
     
     public IndexModel(MailroomDbContext context, ILogger<IndexModel> logger)
     {
