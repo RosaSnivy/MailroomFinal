@@ -9,9 +9,9 @@ public class MailroomDbContext : DbContext
     {
 
     }
-    public DbSet<Package>? Packages {get; set;}
-    public DbSet<Resident>? Residents {get; set;}
-    public DbSet<StaffLogin>? StaffLogins {get; set;}
-    public DbSet<UnknownPackage>? UnknownPackages {get; set;}
+    public DbSet<Package> Packages {get; set;} = null!;
+    public DbSet<Resident> Residents {get; set;} = null!;
+    public DbSet<StaffLogin> StaffLogins {get; set;} = null!;
+    public DbSet<UnknownPackage> UnknownPackages {get; set;} = null!;
     
 }
