@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -72,6 +73,43 @@ namespace MailroomFinal.Migrations
                         principalColumn: "ResidentID");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Historys",
+                columns: table => new
+                {
+                    HistoryID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    PackageID = table.Column<int>(type: "INTEGER", nullable: false),
+                    timeReceived = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ResidentID = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Historys", x => x.HistoryID);
+                    table.ForeignKey(
+                        name: "FK_Historys_Packages_PackageID",
+                        column: x => x.PackageID,
+                        principalTable: "Packages",
+                        principalColumn: "PackageID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Historys_Residents_ResidentID",
+                        column: x => x.ResidentID,
+                        principalTable: "Residents",
+                        principalColumn: "ResidentID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Historys_PackageID",
+                table: "Historys",
+                column: "PackageID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Historys_ResidentID",
+                table: "Historys",
+                column: "ResidentID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Packages_ResidentsResidentID",
                 table: "Packages",
@@ -82,13 +120,16 @@ namespace MailroomFinal.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Packages");
+                name: "Historys");
 
             migrationBuilder.DropTable(
                 name: "StaffLogins");
 
             migrationBuilder.DropTable(
                 name: "UnknownPackages");
+
+            migrationBuilder.DropTable(
+                name: "Packages");
 
             migrationBuilder.DropTable(
                 name: "Residents");

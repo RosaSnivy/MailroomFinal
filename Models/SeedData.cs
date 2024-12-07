@@ -68,6 +68,11 @@ public static class SeedData
           new Resident {name = "Vivyan Petzold", email = wt_email, unitNumber = 510}
         );
 
+        context.StaffLogins.AddRange(
+          new StaffLogin {username = "alice", password = "alice123"},
+          new StaffLogin {username = "may", password = "password"}
+        );
+
         context.SaveChanges();
     }
 }

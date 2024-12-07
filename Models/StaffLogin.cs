@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Mailroom.Models;
 
 public class StaffLogin
