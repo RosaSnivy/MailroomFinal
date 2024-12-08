@@ -1,4 +1,35 @@
 @page
 @model DashboardModel
 
-<p>hi</p>
+
+<h3>Mailroom</h3>
+<hr>
+<div class="col-4">
+    <a href="/Package">
+    <button>Process Package</button>
+    </a>
+</div>
+<hr>
+<div class="table-responsive">
+    <table class="table">
+        <thead style="text-align: center;">
+            <tr>
+                <th scope="col">
+                    Resident Name
+                </th>
+                <th scope="col">
+                    Unit Number
+                </th>
+                <th scope="col">
+                    Postal Service
+                </th>
+            </tr>
+        </thead>
+        @foreach(var item in Model.Packages)
+        {
+            <tbody>
+                
+            </tbody>
+        }
+    </table>
+</div>

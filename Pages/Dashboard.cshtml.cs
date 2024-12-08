@@ -10,6 +10,7 @@ public class DashboardModel : PageModel
     // Add: Property for database context
     private readonly MailroomDbContext _context; // Replaces the "db" variable from before
     private readonly ILogger<IndexModel> _logger;
+    public List<Package> Packages {get; set;} = null!;
     
     public DashboardModel(MailroomDbContext context, ILogger<IndexModel> logger)
     {
