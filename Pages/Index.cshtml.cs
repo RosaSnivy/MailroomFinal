@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Mailroom.Models;
+using Microsoft.VisualBasic;
 
 namespace MailroomFinal.Pages;
 public class IndexModel : PageModel
@@ -21,5 +22,26 @@ public class IndexModel : PageModel
     public void OnGet()
     {
 
+    }
+
+    public IActionResult OnPost()
+    {
+    if (string.IsNullOrWhiteSpace(StaffLogin.username) || string.IsNullOrWhiteSpace(StaffLogin.password))
+    {
+        // Do not perform validation and simply return the page
+        return Page();
+    }
+        // Use LINQ to find a matching staff login
+    var login = _context.StaffLogins
+        .FirstOrDefault(item => item.username == StaffLogin.username && item.password == StaffLogin.password);
+
+    if (login != null)
+    {
+        // Redirect to Dashboard if login matches
+        return RedirectToPage("/Dashboard");
+    } else {
+        ModelState.AddModelError(string.Empty, "Invalid username or password.");
+        return Page();
+    }
     }
 }
